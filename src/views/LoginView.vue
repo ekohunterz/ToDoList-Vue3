@@ -10,9 +10,9 @@ const loginWithGoogle = () => {
   userStore.signInWithGoogle()
 }
 
-const email = ref('')
-const password = ref('')
-const errorMsg = ref('')
+const email = ref<string>('')
+const password = ref<string>('')
+const errorMsg = ref<string>('')
 
 const handleSubmit = async () => {
   await userStore.signInWithEmailAndPassword(email.value, password.value)

@@ -1,52 +1,69 @@
-# to-do-list
+# Vue 3 To-Do List with Firebase
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple To-Do List application built with Vue 3 and Firebase for real-time data storage.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Add, edit, and delete tasks
+- Real-time data synchronization with Firebase
+- User authentication and task storage per user
 
-## Type Support for `.vue` Imports in TS
+## Technologies Used
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- **Vue 3**
+- **Firebase (Vuefire)**
+- **Pinia**
+- **Vue Router**
+- **Tailwind CSS**
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Getting Started
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Prerequisites
 
-## Customize configuration
+- **Node.js:** Make sure Node.js is installed on your machine. You can download it [here](https://nodejs.org/).
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Installation
 
-## Project Setup
+1. **Clone the repository:**
 
-```sh
-npm install
-```
+   ```bash
+   git clone https://github.com/your-username/vue3-firebase-todo.git
+   ```
 
-### Compile and Hot-Reload for Development
+2. **Install the dependencies:**
 
-```sh
-npm run dev
-```
+   ```bash
+   cd vue3-firebase-todo
+   ```
 
-### Type-Check, Compile and Minify for Production
+   ```bash
+   npm install
+   ```
 
-```sh
-npm run build
-```
+3. **Configure environment variables:**
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+   Rename the `.env.example` file to `.env` and update the variables with your Firebase project settings.
 
-```sh
-npm run test:unit
-```
+4. **Start the development server:**
 
-### Lint with [ESLint](https://eslint.org/)
+   ```bash
+   npm run dev
+   ```
 
-```sh
-npm run lint
-```
+5. Open the application in your browser:
+   ```bash
+   http://localhost:5173
+   ```
+
+## Screenshots
+
+![Screenshot](./ss.png)
+![Screenshot 2](./ss2.png)
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

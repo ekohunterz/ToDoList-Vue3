@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword
 } from 'firebase/auth'
 import router from '@/router'
-import { useCurrentUser, getCurrentUser } from 'vuefire'
+import { useCurrentUser } from 'vuefire'
 
 function throwError(error: { code: string }) {
   throw error.code
@@ -22,9 +22,9 @@ export const createUserStore = defineStore('userStore', {
     }
   },
   actions: {
-    register(form) {
+    async register(email: string, password: string) {
       const auth = getAuth()
-      createUserWithEmailAndPassword(auth, form.email, form.password)
+      await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           this.user = userCredential.user
           router.push({ name: 'todo' })
@@ -33,7 +33,6 @@ export const createUserStore = defineStore('userStore', {
           this.errorMsg = error.code
         })
     },
-
     async signInWithEmailAndPassword(email: string, password: string) {
       this.isLoading = true
       const auth = getAuth()

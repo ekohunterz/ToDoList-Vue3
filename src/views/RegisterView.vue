@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import IconGoogle from '@/components/IconGoogle.vue'
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import { createUserStore } from '@/stores/userStore'
 
 const userStore = createUserStore()
 
-const errorMsg = ref('')
-const form = reactive({
-  email: '',
-  password: ''
-})
+const errorMsg = ref<string>('')
+const email = ref<string>('')
+const password = ref<string>('')
 
-const handleSubmit = () => {
-  userStore.register(form)
+const handleSubmit = async () => {
+  await userStore.register(email.value, password.value)
   if (userStore.errorMsg) {
     errorMsg.value = userStore.errorMsg
   }
@@ -31,20 +29,20 @@ const handleSubmit = () => {
           <p v-if="errorMsg" class="text-red-500">{{ errorMsg }}</p>
           <input
             type="email"
-            v-model="form.email"
+            v-model="email"
             class="bg-primary px-3 py-1 rounded-md"
             placeholder="Email"
           />
           <input
             type="password"
-            v-model="form.password"
+            v-model="password"
             class="bg-primary px-3 py-1 rounded-md"
             placeholder="Password"
           />
           <button
             class="bg-tertiary px-3 py-1 rounded-md hover:bg-opacity-80 duration-300 ease-in-out"
           >
-            Sign In
+            Register
           </button>
         </form>
         <p>

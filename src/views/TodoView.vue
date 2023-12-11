@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { createTodoStore } from '@/stores/todoStore'
 import { createUserStore } from '@/stores/userStore'
 
@@ -29,7 +29,7 @@ const checkTask = (task: any) => {
 </script>
 
 <template>
-  <main>
+  <main class="mb-36">
     <div class="container text-center w-full">
       <div v-if="isLoading" class="text-3xl font-bold mt-18 text-quaternary">Loading</div>
       <div
@@ -71,7 +71,7 @@ const checkTask = (task: any) => {
               <div :class="[task.completed ? 'line-through ' : '']">{{ task.name }}</div>
 
               <button
-                class="text-red-800 px-3 ms-auto z-20 py-1 hover:opacity-80 font-bold"
+                class="text-red-800 px-3 ms-auto py-1 hover:opacity-80 font-bold"
                 @click="deleteTask(task.id)"
               >
                 X
