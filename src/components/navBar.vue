@@ -1,25 +1,15 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { onMounted } from 'vue'
 import { createUserStore } from '@/stores/userStore'
 import { useCurrentUser } from 'vuefire'
 
 const userStore = createUserStore()
 
-const router = useRouter()
 const user = useCurrentUser()
 
 const logout = () => {
   userStore.signOut()
 }
-
-onMounted(() => {
-  if (user) {
-    router.push('/todo')
-  } else {
-    router.push('/login')
-  }
-})
 </script>
 
 <template>
