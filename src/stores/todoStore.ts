@@ -19,7 +19,7 @@ export const createTodoStore = defineStore('todoStore', {
       if (user) {
         const q = query(collection(db, `users/${user?.uid}/todos`), orderBy('dateAdded', 'desc'))
         const querySnapshot = useCollection(q, {
-          ssrKey: true
+          ssrKey: user?.uid
         })
         return querySnapshot
       }
