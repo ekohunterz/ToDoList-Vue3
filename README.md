@@ -57,8 +57,8 @@ A simple To-Do List application built with Vue 3 and Firebase for real-time data
 
 ## Screenshots
 
-![Screenshot](/img/ss.png)
-![Screenshot 2](/img/ss2.png)
+![Screenshot](/public/ss/ss.png)
+![Screenshot 2](/public/ss/ss2.png)
 
 ## Contributing
 
