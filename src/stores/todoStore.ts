@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import { addDoc, collection, doc, deleteDoc, setDoc } from 'firebase/firestore'
-import router from '@/router'
-import { getCurrentUser, useFirestore, useCollection, useCurrentUser } from 'vuefire'
+import { addDoc, collection, doc, deleteDoc, setDoc, orderBy, query } from 'firebase/firestore'
+
+import { useFirestore, useCollection } from 'vuefire'
 
 function throwError(error: { code: string }) {
   throw error.code
@@ -17,8 +17,10 @@ export const createTodoStore = defineStore('todoStore', {
     getTasks(user: any) {
       const db = useFirestore()
       if (user) {
-        const q = collection(db, `users/${user?.uid}/todos`)
-        const querySnapshot = useCollection(q)
+        const q = query(collection(db, `users/${user?.uid}/todos`), orderBy('dateAdded', 'desc'))
+        const querySnapshot = useCollection(q, {
+          ssrKey: true
+        })
         return querySnapshot
       }
     },
@@ -28,6 +30,7 @@ export const createTodoStore = defineStore('todoStore', {
       if (user) {
         await addDoc(collection(db, `users/${user?.uid}/todos`), {
           name: task,
+          dateAdded: new Date(),
           completed: false
         })
           .catch((error) => {
@@ -57,6 +60,7 @@ export const createTodoStore = defineStore('todoStore', {
       if (user) {
         await setDoc(doc(db, `users/${user?.uid}/todos`, task.id), {
           name: task.name,
+          dateAdded: task.dateAdded,
           completed: task.completed ? false : true
         })
           .catch((error) => {
