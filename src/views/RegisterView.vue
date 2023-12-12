@@ -16,6 +16,10 @@ const handleSubmit = async () => {
     errorMsg.value = userStore.errorMsg
   }
 }
+
+const loginWithGoogle = () => {
+  userStore.signInWithGoogle()
+}
 </script>
 
 <template>
@@ -66,6 +70,7 @@ const handleSubmit = async () => {
           <p class="mx-4 mb-0 text-center font-semibold dark:text-white">Or</p>
         </div>
         <button
+          @click="loginWithGoogle()"
           class="bg-quaternary inline-flex gap-3 text-center items-center mx-auto text-primary font-semibold px-3 py-1 hover:bg-opacity-80 ease-in-out duration-300 rounded-md"
         >
           <IconGoogle :width="18" :height="18" /> Sign In With Google
