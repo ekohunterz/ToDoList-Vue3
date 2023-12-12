@@ -8,7 +8,6 @@ const todoStore = createTodoStore()
 const task = ref<string>('')
 const errorMsg = ref<string>('')
 const user = userStore.currentUser()
-const isLoading = todoStore.isLoading
 const todos = todoStore.getTasks(user)
 
 const addTask = () => {
@@ -31,9 +30,7 @@ const checkTask = (task: any) => {
 <template>
   <main class="mb-36">
     <div class="container text-center w-full">
-      <div v-if="isLoading" class="text-3xl font-bold mt-18 text-quaternary">Loading</div>
       <div
-        v-else
         class="lg:w-1/2 bg-gradient-to-r from-primary to-secondary mx-auto p-4 mt-12 rounded-lg shadow-md"
       >
         <h1 class="text-3xl font-bold text-quaternary drop-shadow-md">To Do App</h1>

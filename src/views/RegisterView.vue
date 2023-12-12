@@ -2,6 +2,7 @@
 import IconGoogle from '@/components/IconGoogle.vue'
 import { ref } from 'vue'
 import { createUserStore } from '@/stores/userStore'
+import LoadingComponentsVue from '@/components/LoadingComponents.vue'
 
 const userStore = createUserStore()
 
@@ -24,6 +25,14 @@ const handleSubmit = async () => {
         class="flex flex-col gap-4 lg:w-1/3 mx-auto bg-gradient-to-br mt-12 from-primary to-secondary rounded-lg p-6 shadow-md text-quaternary"
       >
         <h1 class="text-3xl text-center font-bold">Register</h1>
+        <div class="text-center mt-3 relative">
+          <LoadingComponentsVue
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            :width="50"
+            :height="50"
+            v-if="userStore.isLoading"
+          />
+        </div>
         <p class="mt-6">Register your account</p>
         <form class="flex flex-col gap-4" action="" method="post" @submit.prevent="handleSubmit">
           <p v-if="errorMsg" class="text-red-500">{{ errorMsg }}</p>

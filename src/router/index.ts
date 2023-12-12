@@ -18,7 +18,8 @@ const router = createRouter({
       name: 'register',
       component: () => import('../views/RegisterView.vue'),
       meta: {
-        isProtected: false
+        isProtected: false,
+        redirectIfLogin: true
       }
     },
     {
@@ -26,7 +27,8 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue'),
       meta: {
-        isProtected: false
+        isProtected: false,
+        redirectIfLogin: true
       }
     },
     {
@@ -46,6 +48,10 @@ async function authGuard(to: any) {
   if (to.meta.isProtected && !user) {
     // Redirect to a login page
     return '/login'
+  }
+  if (to.meta.redirectIfLogin && user) {
+    // Redirect to the todo page
+    return '/todo'
   }
 }
 

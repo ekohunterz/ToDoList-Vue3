@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { createUserStore } from '@/stores/userStore'
+
+const userStore = createUserStore()
+
+const link = userStore.currentUser() ? '/todo' : '/login'
+</script>
 
 <template>
   <main>
@@ -12,7 +18,7 @@
           Create, update, and delete tasks with user authentication by Firebase.
         </p>
         <router-link
-          to="/login"
+          :to="link"
           class="bg-tertiary mt-6 py-4 w-1/2 mx-auto text-center rounded-md hover:bg-opacity-80 duration-300 ease-in-out"
           >Get Started</router-link
         >

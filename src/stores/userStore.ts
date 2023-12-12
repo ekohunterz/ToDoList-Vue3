@@ -16,21 +16,23 @@ function throwError(error: { code: string }) {
 export const createUserStore = defineStore('userStore', {
   state: () => {
     return {
-      user: null as any,
       isLoading: false as boolean,
       errorMsg: '' as any
     }
   },
   actions: {
     async register(email: string, password: string) {
+      this.isLoading = true
       const auth = getAuth()
       await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          this.user = userCredential.user
+        .then(() => {
           router.push({ name: 'todo' })
         })
         .catch((error) => {
           this.errorMsg = error.code
+        })
+        .finally(() => {
+          this.isLoading = false
         })
     },
     async signInWithEmailAndPassword(email: string, password: string) {
@@ -82,7 +84,7 @@ export const createUserStore = defineStore('userStore', {
       auth
         .signOut()
         .then(() => {
-          router.push({ name: 'login' })
+          router.push({ name: 'home' })
         })
         .catch((error) => {
           throwError(error)
