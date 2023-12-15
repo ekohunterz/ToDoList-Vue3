@@ -27,13 +27,13 @@ A simple To-Do List application built with Vue 3 and Firebase for real-time data
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/vue3-firebase-todo.git
+   git clone https://github.com/ekohunterz/ToDoList-Vue3.git
    ```
 
 2. **Install the dependencies:**
 
    ```bash
-   cd vue3-firebase-todo
+   cd ToDoList-Vue3
    ```
 
    ```bash
